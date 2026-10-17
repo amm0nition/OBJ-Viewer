@@ -1,0 +1,16 @@
+# Binaries and build artifacts
+bin/*.exe
+*.ilk
+*.pdb
+*.idb
+*.suo
+*.user
+*.o
+bin/main.obj
+bin/glad.obj
+
+# IDE and OS
+.vs/
+.vscode/
+Thumbs.db
+[Dd]esktop.ini

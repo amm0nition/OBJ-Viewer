@@ -24,8 +24,8 @@ if %errorlevel% neq 0 (
 
 where cl >nul 2>nul
 if %errorlevel% equ 0 (
-    echo [MSVC] Compiling OBJ Viewer for x64 Windows Vista - Subsystem 6.00
-    cl /nologo /O2 /W3 /EHsc /MD /D_WIN32_WINNT=0x0600 /DWINVER=0x0600 /Iinclude /Isrc src\main.cpp src\glad.cpp /Fo:bin\ /Fe:bin\OBJViewer.exe /link /SUBSYSTEM:CONSOLE,6.00 /MACHINE:X64 /LIBPATH:lib glfw3.lib opengl32.lib gdi32.lib user32.lib shell32.lib
+    echo [MSVC] Compiling OBJ Viewer...
+    cl /nologo /O2 /W3 /EHsc /MD /D_WIN32_WINNT=0x0A00 /DWINVER=0x0A00 /Iinclude /Isrc src\main.cpp src\glad.cpp /Fo:bin\ /Fe:bin\OBJViewer.exe /link /SUBSYSTEM:CONSOLE /MACHINE:X64 /LIBPATH:lib glfw3.lib opengl32.lib gdi32.lib user32.lib shell32.lib
     if errorlevel 1 goto build_failed
     del bin\main.obj bin\glad.obj >nul 2>nul
     goto build_success
@@ -40,8 +40,8 @@ if exist "C:\msys64\mingw64\bin\g++.exe" (
 
 where g++ >nul 2>nul
 if %errorlevel% equ 0 (
-    echo [MinGW] Compiling OBJ Viewer for x64 Windows Vista - Subsystem 6.00
-    g++ -m64 -O2 -D_WIN32_WINNT=0x0600 -DWINVER=0x0600 -Iinclude -Isrc src/main.cpp src/glad.cpp -o bin/OBJViewer.exe -Llib -lglfw3 -lopengl32 -lgdi32 -luser32 -lshell32 -Wl,--subsystem,console:6.0 -static-libgcc -static-libstdc++
+    echo [MinGW] Compiling OBJ Viewer for x64 Windows 10/11...
+    g++ -m64 -O2 -D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -Iinclude -Isrc src/main.cpp src/glad.cpp -o bin/OBJViewer.exe -Llib -lglfw3 -lopengl32 -lgdi32 -luser32 -lshell32 -Wl,--subsystem,console -static-libgcc -static-libstdc++
     if errorlevel 1 goto build_failed
     goto build_success
 )
